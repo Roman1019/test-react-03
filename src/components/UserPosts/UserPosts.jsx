@@ -9,7 +9,7 @@ export default function UserPosts() {
 
   useEffect(() => {
     async function getPosts() {
-      const data = await fetchUserPosts();
+      const data = await fetchUserPosts(userId);
       setPosts(data);
       console.log(data);
     }

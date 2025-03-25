@@ -13,10 +13,11 @@ export default function UsersPage() {
   const query = searchParams.get("query") ?? "";
 
   const [debounceQuery] = useDebounce(query, 1000);
+  console.log(debounceQuery);
 
   const changeSearchText = (event) => {
     const nextParams = new URLSearchParams(searchParams);
-    nextParams.set("query", event.target.value);
+    nextParams.set("query", event.target.value.trim());
     setSearchParams(nextParams);
   };
 
@@ -25,6 +26,7 @@ export default function UsersPage() {
       try {
         setError(false);
         setIsLoading(true);
+        console.log("Fetching users for:", debounceQuery);
         const data = await fetchUsers(debounceQuery);
         setUsers(data);
       } catch {

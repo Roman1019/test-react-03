@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FetchUserById } from "../userService";
 import UserInfo from "../components/UserInfo/UserInfo";
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, Link } from "react-router";
 
 export default function UserDetailsPage() {
   const { userId } = useParams();
@@ -26,6 +26,7 @@ export default function UserDetailsPage() {
   }, [userId]);
   return (
     <div>
+      <Link to="/dashboard">Go Back</Link>
       {isLoading && <b>Loading users...</b>}
       {error && <b>Whoops something wrong...</b>}
       {user && <UserInfo user={user} />}
