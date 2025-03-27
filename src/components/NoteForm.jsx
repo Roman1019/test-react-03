@@ -7,7 +7,6 @@ export default function NoteForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addNote(event.target.elements.text.value));
-    // console.log(event.target.elements.text.value);
   };
   return (
     <form onSubmit={handleSubmit}>
