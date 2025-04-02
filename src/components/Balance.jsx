@@ -5,6 +5,7 @@ export default function Balance() {
   const dispatch = useDispatch();
 
   const balance = useSelector((state) => state.balance.value);
+  console.log(balance);
 
   const handleDeposit = () => {
     dispatch(deposit(20));
