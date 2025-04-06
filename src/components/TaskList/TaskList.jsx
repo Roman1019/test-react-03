@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import Task from "../Task/Task";
 import css from "./TaskList.module.css";
+import { selectTasks, selectVisibleTasks } from "../../redux/tasksSlice.js";
+import { selectTextFilter } from "../../redux/filtersSlice.js";
 
 export default function TaskList() {
-  const tasks = useSelector((state) => state.tasks.items);
+  const tasks = useSelector(selectVisibleTasks);
 
   return (
     <ul className={css.list}>
