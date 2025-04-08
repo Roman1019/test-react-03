@@ -1,17 +1,16 @@
 import { useSelector } from "react-redux";
-import Task from "../Task/Task";
+import { Task } from "../Task/Task";
+import { selectAllTasks } from "../../redux/tasks/selectors";
 import css from "./TaskList.module.css";
-import { selectTasks, selectVisibleTasks } from "../../redux/tasksSlice.js";
-import { selectTextFilter } from "../../redux/filtersSlice.js";
 
 export default function TaskList() {
-  const tasks = useSelector(selectVisibleTasks);
+  const tasks = useSelector(selectAllTasks);
 
   return (
     <ul className={css.list}>
-      {tasks.map((task) => (
-        <li key={task.id}>
-          <Task task={task} />
+      {tasks.map(({ id, text }) => (
+        <li key={id}>
+          <Task id={id} text={text} />
         </li>
       ))}
     </ul>
